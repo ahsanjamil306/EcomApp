@@ -1,0 +1,55 @@
+import React, { useState } from "react";
+import Navbar from "../components/Navbar";
+import { images, icons } from "../utils/assets";
+import { useLocation } from "react-router-dom";
+
+const Productpage = () => {
+  const { state } = useLocation();
+  const [data, setData] = useState("");
+
+  return (
+    <>
+      <Navbar search={false} />
+      <div className=" w-full  flex mt-10  p-4">
+        <div className=" w-[50%] p-3">
+          <h1 className="text-[30px] ml-5 font-bold">{state?.detail}</h1>
+          <img
+            className="h-full w-full flex items-center justify-center mt-5 bg-contain "
+            src={state?.prodectImg}
+            alt="product-image"
+            loading="eager"
+          />
+        </div>
+        <div className=" w-[50%] p-3 ">
+          <div className="pl-8 font-bold text-[25px] mt-5 text-[#808080]">
+            Product Description
+          </div>
+          <div className="px-8 mt-10">{state.description}</div>
+          <div className="font-bold text-[20px] ml-8 mt-8">
+            PRICE : ${state?.price}{" "}
+          </div>
+          <div className="flex items-center justify-between mt-10 ml-8">
+            <a className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              Add to wish List
+            </a>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Productpage;
+
+{
+  /* <div className="w-[50%] bg-blue-500 fixed font-bold items-center  ">
+{" "}
+<h1 className="text-[30px]">Leather Original wallet for men</h1>
+<img
+  className="h-full w-full flex items-center justify-center mt-5 bg-contain "
+  src={images.wallet}
+  alt="product-image"
+  loading="eager"
+/>
+</div> */
+}
