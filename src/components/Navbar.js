@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const Navbar = ({ isSearch, search, setSearch }) => {
+const Navbar = ({ isSearch, search, setSearch, count }) => {
   const navigate = useNavigate();
 
   return (
@@ -9,9 +9,9 @@ const Navbar = ({ isSearch, search, setSearch }) => {
         <a className="flex items-center space-x-3 rtl:space-x-reverse">
           <span
             onClick={() => navigate("/")}
-            className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-white"
+            className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-white cursor-pointer"
           >
-            PRODUCT SEARCH
+            SHOP WHOP
           </span>
         </a>
         <div className="flex md:order-2">
@@ -145,9 +145,18 @@ const Navbar = ({ isSearch, search, setSearch }) => {
               </a>
             </li>
             <li>
-              <a className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                Wish List
-              </a>
+              <div className="relative">
+                <div className="h-6 w-6 rounded-full bg-white absolute bottom-[12px] right-[-18px]  flex items-center justify-center ">
+                  {" "}
+                  <p className="font-bold">{count}</p>
+                </div>
+                <button
+                  onClick={() => navigate("/wish-list")}
+                  className=" cursor-pointer block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >
+                  Wish List
+                </button>
+              </div>
             </li>
           </ul>
         </div>

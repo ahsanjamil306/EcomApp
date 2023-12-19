@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import { images, icons } from "../utils/assets";
 import { useNavigate } from "react-router-dom";
-
+import store from "../index";
+import { addProduct, removeProduct } from "../actions/index";
 const Card = ({ data, search }) => {
   const [noDataMessage, setoDataMessage] = useState("");
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const Card = ({ data, search }) => {
         filteredData.map((val, id) => {
           return (
             <div
+              key={id}
               onClick={() =>
                 navigate("/product-page", {
                   state: val,
@@ -96,16 +98,25 @@ const Card = ({ data, search }) => {
                   <span className="text-3xl font-bold text-gray-900 dark:text-white">
                     $599
                   </span>
-                  <a className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Add to cart
-                  </a>
+                  <button
+                    onClick={() => store.dispatch(addProduct(val))}
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Add to wish list
+                  </button>
+                  {/* <button
+                    onClick={() => store.dispatch(removeProduct(val))}
+                    className="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    remove from cart
+                  </button> */}
                 </div>
               </div>
             </div>
           );
         })
       ) : (
-        <div className="bg-blue-300 h-screen w-screen flex items-center justify-center text-red-500 text-[30px]">
+        <div className="w-full h-screen flex items-center justify-center text-red-500 text-[30px]">
           No items found
         </div>
       )}
