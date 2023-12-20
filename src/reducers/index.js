@@ -10,10 +10,7 @@ const rootReducer = (state = initalState.products, action) => {
     case ADD_PRODUCT:
       return [...state, action.product];
     case REMOVE_PRODUCT:
-      state.splice(
-        state.findIndex((p) => p.id === action.product.id),
-        1
-      );
+      return state.filter((p) => p.id !== action.product.id);
     default:
       return state;
   }

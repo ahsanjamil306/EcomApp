@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import { images, icons } from "../utils/assets";
 import { useLocation } from "react-router-dom";
-
-const Productpage = () => {
+import { connect } from "react-redux";
+const Productpage = (props) => {
   const { state } = useLocation();
   const [data, setData] = useState("");
+  let { products } = props;
 
+  const cout_product = products?.length;
   return (
     <>
-      <Navbar search={false} />
+      <Navbar search={false} count={cout_product} />
       <div className=" w-full  flex mt-10  p-4">
         <div className=" w-[50%] p-3">
           <h1 className="text-[30px] ml-5 font-bold">{state?.detail}</h1>
@@ -39,17 +41,11 @@ const Productpage = () => {
   );
 };
 
-export default Productpage;
+const mapStateToProps = (state) => {
+  return {
+    products: state,
+    // Add other reducer variables as needed
+  };
+};
 
-{
-  /* <div className="w-[50%] bg-blue-500 fixed font-bold items-center  ">
-{" "}
-<h1 className="text-[30px]">Leather Original wallet for men</h1>
-<img
-  className="h-full w-full flex items-center justify-center mt-5 bg-contain "
-  src={images.wallet}
-  alt="product-image"
-  loading="eager"
-/>
-</div> */
-}
+export default connect(mapStateToProps)(Productpage);

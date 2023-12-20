@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const Navbar = ({ isSearch, search, setSearch, count }) => {
+const Navbar = ({ isSearch, search, setSearch, count, isHome }) => {
   const navigate = useNavigate();
 
   return (
-    <nav className="bg-blue-500 border-gray-200 dark:bg-gray-900">
+    <nav
+      className={`bg-blue-500 border-gray-200 dark:bg-gray-900 w-full ${
+        isHome === true ? "fixed" : null
+      }`}
+    >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a className="flex items-center space-x-3 rtl:space-x-reverse">
           <span

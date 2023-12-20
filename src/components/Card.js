@@ -22,15 +22,15 @@ const Card = ({ data, search }) => {
           return (
             <div
               key={id}
-              onClick={() =>
-                navigate("/product-page", {
-                  state: val,
-                })
-              }
-              className=" mt-5 w-fill max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 "
+              className=" mt-14 w-fill max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 "
             >
               <a>
                 <img
+                  onClick={() =>
+                    navigate("/product-page", {
+                      state: val,
+                    })
+                  }
                   className="p-8 rounded-t-lg"
                   src={val.prodectImg}
                   alt="product image"
@@ -96,7 +96,7 @@ const Card = ({ data, search }) => {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                    $599
+                    ${val.price}
                   </span>
                   <button
                     onClick={() => store.dispatch(addProduct(val))}
