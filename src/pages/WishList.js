@@ -64,7 +64,7 @@ const WishList = (props) => {
                 <p className="text-[12px] text-grey-400 w-[80%]">
                   {prod.description}
                 </p>
-                <p className="text-[16px] font-bold mt-2">large</p>
+                {/* <p className="text-[16px] font-bold mt-2">large</p> */}
                 <p
                   onClick={() => store.dispatch(removeProduct(prod))}
                   className="cursor-pointer text-end text-[18px] text-red-500 font-bold"

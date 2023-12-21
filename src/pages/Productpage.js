@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import { images, icons } from "../utils/assets";
 import { useLocation } from "react-router-dom";
 import { connect } from "react-redux";
+import { addProduct } from "../actions";
+import store from "../index";
 const Productpage = (props) => {
   const { state } = useLocation();
   const [data, setData] = useState("");
@@ -31,9 +33,12 @@ const Productpage = (props) => {
             PRICE : ${state?.price}{" "}
           </div>
           <div className="flex items-center justify-between mt-10 ml-8">
-            <a className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <button
+              onClick={() => store.dispatch(addProduct(state))}
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
               Add to wish List
-            </a>
+            </button>
           </div>
         </div>
       </div>
