@@ -15,7 +15,8 @@ function App(props) {
       id: 1,
       prodectImg: images.watch,
       detail: "Brand New Smart Watch 2023",
-      description: "Hello this product is very goood in test ",
+      description:
+        "Multisport GPS watch with a 1.2” display in a resilient 42 mm fiber-reinforced polymer case with a steel or titanium bezel and rear cover ",
       price: 300,
     },
     {
@@ -38,7 +39,7 @@ function App(props) {
     },
     {
       id: 5,
-      prodectImg: images.watch,
+      prodectImg: images.airpod,
       detail: "Brand New Smart Watch 2023",
       price: 300,
     },
