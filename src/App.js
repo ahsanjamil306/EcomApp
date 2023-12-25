@@ -101,7 +101,7 @@ function App(props) {
       />
 
       {/* PRODUCT IMAGES */}
-      <div className="gap-2 flex flex-wrap justify-start p-10  ">
+      <div className="gap-4 flex flex-wrap justify-start p-16 self-center w-full  ">
         <Card data={productData} search={search} />
       </div>
 
