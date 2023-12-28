@@ -4,37 +4,44 @@ import { images, icons } from "../utils/assets";
 import { useNavigate } from "react-router-dom";
 import store from "../index";
 import { addProduct, removeProduct } from "../actions/index";
+
 const Card = ({ data, search }) => {
   const navigate = useNavigate();
+  console.log("Data", data);
 
-  const filteredData = data.filter((val) => {
-    return search.toLowerCase() === ""
+  console.log("Search value on card ====>", search);
+  const filteredData = data?.filter((val) => {
+    return search?.toLowerCase() === ""
       ? val
-      : val.detail.toLowerCase().includes(search);
+      : val?.detail?.toLowerCase().includes(search);
   });
 
   return (
     <>
       {filteredData.length !== 0 ? (
         filteredData.map((val, id) => {
+          console.log("card product image", val.prodectImg);
           return (
             <div
               key={id}
-              className=" mt-14 w-fill max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 "
+              className="shadow-md mt-14 w-fill max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 "
             >
-              <a>
-                <img
-                  onClick={() =>
-                    navigate("/product-page", {
-                      state: val,
-                    })
-                  }
-                  className="p-8 rounded-t-lg"
-                  src={val.prodectImg}
-                  alt="product image"
-                />
-              </a>
-              <div className="px-5 pb-5">
+              <div className="flex items-center justify-center ">
+                <div className="">
+                  <img
+                    onClick={() =>
+                      navigate("/product-page", {
+                        state: val,
+                      })
+                    }
+                    className=" rounded-t-lg bg-cover "
+                    src={val.prodectImg}
+                    loading="eager"
+                    alt="product image"
+                  />
+                </div>
+              </div>
+              <div className="px-5 pb-5 self-end">
                 <a>
                   <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                     {val.detail}
