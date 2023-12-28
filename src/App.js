@@ -5,6 +5,8 @@ import { images, icons } from "../src/utils/assets";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import RegistrationForm from "./pages/Registrationform";
+import LoginForm from "./pages/Loginform";
 function App(props) {
   const [search, setSearch] = useState("");
   let { products } = props;
@@ -30,7 +32,7 @@ function App(props) {
     {
       id: 3,
       prodectImg: images.ladiesWallet,
-      detail: "Brand New Smart Watch 2023",
+      detail: "Branded Ladies Wallet",
       description: `The Clutch style is a cross between a women’s wallet and a purse.  It holds money, credit cards and a mobile phone at the very least. It is handheld and can be carried instead of a purse depending on the size. The one above is by Madewell and is 6” x 9”.  It has seven credit card slots and a coin pouch. It is made from English saddle leather, comes in three colors,  and can be personalized.
         Contact Detail: 123456789`,
       price: 300,
@@ -46,7 +48,7 @@ function App(props) {
     {
       id: 5,
       prodectImg: images.airpod,
-      detail: "Brand New Smart Watch 2023",
+      detail: "Brand New AirPod",
       description: `There are two microphones inside each AirPod, one facing outward at ear level and another at the bottom of the stem. Each AirPod weighs 0.14 oz (4.0 g), and its charging case weighs 1.34 oz (38 g). The AirPods are capable of holding a charge of around five hours.AirPods and the Lightning Charging Case is rated IPX4 sweat and water resistant, so they’ll withstand anything from heavy workouts to rain.
         Contact Detail: 12456789`,
       price: 300,
@@ -82,7 +84,7 @@ function App(props) {
     {
       id: 10,
       prodectImg: images.phone,
-      detail: "Samsung A04 for Sale",
+      detail: "Samsung A04 Mobile for Sale",
       description: `eneral FeaturesRelease Date2023-05-10SIM SupportHybrid Dual SIM (Nano-SIM, dual stand-by)Phone Dimensions165.66 x 75.96 x 7.85 mmPhone Weight183.5gOperating SystemMIUI 14 based on Android 13DisplayScreen Size6.67 inchesScreen Resolution1080 x 2400 pixelsScreen TypeAMOLED Capacitive Touchscreen, MultitouchScreen ProtectionCorning Gorilla Glass 3MemoryInternal Memory128 GBRAM8 GBCard SlotmicroSDXC (uses shared SIM slot)PerformanceProcessorQualcomm Snapdragon 685 (6nm)GPUAdreno 610BatteryTypeLi-Po 5000 mAh, non-removableCameraFront Camera13 MPFront Flash LightNoFront Video Recording1080p@30fpsBack Flash LightYesBack Camera50 MP + 8 MP + 2 MPBack Video. Contact Deails: 123456789`,
       price: 500,
     },
