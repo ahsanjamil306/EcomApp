@@ -4,21 +4,24 @@ import { images, icons } from "../utils/assets";
 import { useNavigate } from "react-router-dom";
 import store from "../index";
 import { addProduct, removeProduct } from "../actions/index";
+
 const Card = ({ data, search }) => {
   const [noDataMessage, setoDataMessage] = useState("");
   const navigate = useNavigate();
+  console.log("Data", data);
 
   console.log("Search value on card ====>", search);
-  const filteredData = data.filter((val) => {
-    return search.toLowerCase() === ""
+  const filteredData = data?.filter((val) => {
+    return search?.toLowerCase() === ""
       ? val
-      : val.detail.toLowerCase().includes(search);
+      : val?.detail?.toLowerCase().includes(search);
   });
 
   return (
     <>
       {filteredData.length !== 0 ? (
         filteredData.map((val, id) => {
+          console.log("card product image", val.prodectImg);
           return (
             <div
               key={id}
