@@ -14,7 +14,8 @@ export default function RouteConfig() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<RegisterForm />} />
+        <Route exact path="/" element={<App />} />
+        <Route exact path="/registration" element={<RegisterForm />} />
         <Route exact path="/Login" element={<LoginForm />} />
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/product-page" element={<Productpage />} />

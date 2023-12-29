@@ -131,11 +131,11 @@ function App(props) {
   };
   return (
     <div className=" h-full w-screen">
-      <RegistrationForm onRegister={handleRegister} />
+      {/* <RegistrationForm onRegister={handleRegister} />
       <LoginForm
         registeredUsers={registeredUsers || []}
         onLogin={handleLogin}
-      />
+      /> */}
       <Navbar
         isSearch={true}
         search={search}

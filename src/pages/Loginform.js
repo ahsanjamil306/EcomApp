@@ -1,70 +1,121 @@
 // src/components/LoginForm.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-const LoginForm = ({ registeredUsers, onLogin }) => {
+import InputField from "../components/InputField/InputField";
+import OrangeButton from "../components/OrangeButton/OrangeButton";
+const LoginForm = () => {
   const [loginData, setLoginData] = useState({
     name: "",
     password: "",
   });
 
   const navigate = useNavigate();
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setLoginData({ ...loginData, [name]: value });
+
+  const [loader, setLoader] = useState(false);
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+  });
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Function to validate the form fields
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors = {};
+
+    if (values.email === "") {
+      newErrors.email = "Please enter an email";
+      isValid = false;
+    } else if (!emailRegex.test(values.email)) {
+      newErrors.email = "Please enter a valid email";
+      isValid = false;
+    }
+
+    if (values.password === "") {
+      newErrors.password = "Please enter a password";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-    // Basic validation
-    if (!loginData.name || !loginData.password) {
-      alert("Please fill in all fields");
+  useEffect(() => {
+    setErrors({
+      email: "",
+      password: "",
+    });
+  }, [values]);
+
+  const handleSubmit = () => {
+    if (!validateForm()) {
       return;
     }
 
-    // Check if the user exists
-    const user = registeredUsers.find(
-      (u) => u.name === loginData.name && u.password === loginData.password
-    );
-
-    if (user) {
-      // Successful login
-      onLogin(user);
-      console.log("Login successful:", user);
+    if (values.email == "zobi.asad97@gmail.com" && values.password == 123) {
+      navigate("/");
     } else {
-      // Wrong name or password
-      alert("Wrong name or password");
+      alert("Please Enter Correct Email and Password");
     }
   };
 
   return (
-    <form className="w-1/2 mx-auto mt-8" onSubmit={handleSubmit}>
-      <label className="block mb-2">Name:</label>
-      <input
-        type="text"
-        name="name"
-        value={loginData.name}
-        onChange={handleChange}
-        className="w-full p-2 mb-4"
-      />
-
-      <label className="block mb-2">Password:</label>
-      <input
-        type="password"
-        name="password"
-        value={loginData.password}
-        onChange={handleChange}
-        className="w-full p-2 mb-4"
-      />
-
-      <button
-        onClick={() => navigate("/")}
-        type="submit"
-        className="bg-green-500 text-white p-2 rounded"
-      >
-        Login
-      </button>
-    </form>
+    <div className="bg-blue-500 w-screen h-screen m-auto flex flex-col justify-center items-center space-y-4">
+      <div className="">
+        <p className="text-[50px] text-white font-bold mb-10">SHOW WHOP</p>
+      </div>
+      <div>
+        <InputField
+          name="email"
+          heading={"Email Address"}
+          value={values.email}
+          onChange={(e) => handleChange(e)}
+        />
+        <p className="text-yellow-500 text-[10px] italic font-inter mt-2">
+          {errors?.email}
+        </p>
+      </div>
+      <div>
+        <InputField
+          type={"password"}
+          name="password"
+          heading={"Password"}
+          value={values.password}
+          onChange={(e) => handleChange(e)}
+        />
+        <p className="text-yellow-500 text-[10px] italic font-inter mt-2">
+          {errors?.password}
+        </p>
+        {/* <div className="w-[320px] text-white flex justify-end mt-1 font-inter font-[600] italic text-[10px] ">
+          <p className="cursor-pointer underline ">Forgot Password</p>
+        </div> */}
+      </div>
+      <div className="my-5">
+        <OrangeButton ButtonTitle={"Login"} onClick={() => handleSubmit()} />
+      </div>
+      {/* <p className="text-white text-[12px] italic text-center font-inter">
+        Need an account? Create one over{" "}
+        <span
+          className="text-[#0291F9] cursor-pointer underline"
+          onClick={() => navigate("/")}
+        >
+          here.
+        </span>
+      </p> */}
+    </div>
   );
 };
 
