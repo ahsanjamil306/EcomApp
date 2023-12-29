@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import store from "../index";
 const WishList = (props) => {
   let { products } = props;
-  console.log("======>>>>>>>> WishList page ", products);
+  // console.log("======>>>>>>>> WishList page ", products);
 
   const cout_product = products.length;
 
@@ -57,7 +57,7 @@ const WishList = (props) => {
                 <div className="flex justify-between">
                   <p className="text-[20px] font-bold">{prod.detail}</p>
                   <p className=" text-end font-bold text-[20px]">
-                    ${prod.price}
+                    Rs{prod.price}
                   </p>
                 </div>
 
@@ -81,7 +81,7 @@ const WishList = (props) => {
         <>
           <div className="  w-[60%] mx-auto flex justify-between text-[20px] text-black font-bold">
             <p>Total</p>
-            <p>${totalAmount}</p>
+            <p>Rs{totalAmount}</p>
           </div>
           <button
             onClick={() => alert("Check out is working")}

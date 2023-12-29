@@ -30,7 +30,7 @@ const Productpage = (props) => {
           </div>
           <div className="px-8 mt-10">{state.description}</div>
           <div className="font-bold text-[20px] ml-8 mt-8">
-            PRICE : ${state?.price}{" "}
+            PRICE : Rs{state?.price}{" "}
           </div>
           <div className="flex items-center justify-between mt-10 ml-8">
             <button

@@ -2,12 +2,18 @@ import "./App.css";
 import Navbar from "../src/components/Navbar";
 import Card from "./components/Card";
 import { images, icons } from "../src/utils/assets";
-import { useNavigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Navigate,
+  useNavigate,
+} from "react-router-dom";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import RegistrationForm from "./pages/Registrationform";
 import LoginForm from "./pages/Loginform";
 import axios from "axios";
+import Home from "./components/Home";
 function App(props) {
   const [search, setSearch] = useState("");
   const [productData, setProductData] = useState([]);
@@ -112,8 +118,24 @@ function App(props) {
 
   const navigate = useNavigate();
 
+  const [registeredUsers, setRegisteredUsers] = useState([]);
+
+  const handleRegister = (userData) => {
+    setRegisteredUsers((prevUsers) => [...prevUsers, userData]);
+    alert("Registration successful");
+  };
+
+  const handleLogin = (user) => {
+    alert("Login successful");
+    // Additional logic like setting authentication state, redirecting, etc., can be added here.
+  };
   return (
     <div className=" h-full w-screen">
+      <RegistrationForm onRegister={handleRegister} />
+      <LoginForm
+        registeredUsers={registeredUsers || []}
+        onLogin={handleLogin}
+      />
       <Navbar
         isSearch={true}
         search={search}
